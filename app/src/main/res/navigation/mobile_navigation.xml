@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/fragment_account">
+
+    <fragment
+        android:id="@+id/fragment_account"
+        android:name="ch.hes_so.master.beerfest.ui.account.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_scan"
+        android:name="ch.hes_so.master.beerfest.ui.blog.ScanFragment"
+        android:label="@string/title_scan"
+        tools:layout="@layout/fragment_scan" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_blog"
+        android:name="ch.hes_so.master.beerfest.ui.blog.BlogFragment"
+        android:label="@string/title_scan"
+        tools:layout="@layout/fragment_scan" />
+
+    <fragment
+        android:id="@+id/fragment_brewery"
+        android:name="ch.hes_so.master.beerfest.ui.brewery.BreweryFragment"
+        android:label="@string/title_brewery"
+        tools:layout="@layout/fragment_brewery" >
+    </fragment>
+</navigation>

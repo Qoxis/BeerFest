@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BeerFest</string>
+    <string name="title_account">Mon compte</string>
+    <string name="title_blog">Blog</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_brewery">Brasserie</string>
+</resources>
