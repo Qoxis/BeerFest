@@ -5,6 +5,22 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/fragment_account">
 
+    <action
+        android:id="@+id/action_bottombar_blog"
+        app:destination="@id/fragment_blog" />
+
+    <action
+        android:id="@+id/action_bottombar_scan"
+        app:destination="@id/fragment_scan"/>
+
+    <action
+        android:id="@+id/action_bottombar_account"
+        app:destination="@id/fragment_account" />
+
+    <action
+        android:id="@+id/action_bottombar_brewery"
+        app:destination="@id/fragment_brewery" />
+
     <fragment
         android:id="@+id/fragment_account"
         android:name="ch.hes_so.master.beerfest.ui.account.AccountFragment"
@@ -31,4 +47,5 @@
         android:label="@string/title_brewery"
         tools:layout="@layout/fragment_brewery" >
     </fragment>
+
 </navigation>

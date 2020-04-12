@@ -3,6 +3,7 @@ package ch.hes_so.master.beerfest
 import android.app.Application
 import androidx.room.Room
 import ch.hes_so.master.beerfest.data.AppDatabase
+import com.google.firebase.FirebaseApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -20,6 +21,7 @@ class BeerFestApp : Application() {
             androidContext(this@BeerFestApp)
             modules(getModules())
         }
+        FirebaseApp.initializeApp(this)
     }
 
     private fun getModules(): Module{

@@ -1,0 +1,71 @@
+package ch.hes_so.master.beerfest
+
+import android.os.Bundle
+import android.view.Menu
+import androidx.annotation.IdRes
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.NavOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import timber.log.Timber
+import java.lang.ref.WeakReference
+
+fun NavController.navigateBottom(
+    resId: Int,
+    source: Int,
+    bottom_bar: BottomNavigationView,
+    order: Int
+) {
+    try {
+        if (currentDestination?.id != source) {
+
+            val builder = NavOptions.Builder()
+                .setLaunchSingleTop(true)
+            if (order and Menu.CATEGORY_SECONDARY == 0) {
+                builder.setPopUpTo(R.id.fragment_account, false)
+            }
+            navigate(resId, null, builder.build())
+
+            val navController = this
+            val weakReference = WeakReference(bottom_bar)
+            this.addOnDestinationChangedListener(
+                object : NavController.OnDestinationChangedListener {
+                    override fun onDestinationChanged(
+                        controller: NavController,
+                        destination: NavDestination, arguments: Bundle?
+                    ) {
+                        val view = weakReference.get()
+                        if (view == null) {
+                            navController.removeOnDestinationChangedListener(this)
+                            return
+                        }
+                        val menu = view.menu
+                        var h = 0
+                        val size = menu.size()
+                        while (h < size) {
+                            val item = menu.getItem(h)
+                            if (matchDestination(destination, item.itemId)) {
+                                item.isChecked = true
+                            } /*else if (item.itemId == R.id.loginFragment && destination.id == R.id.accountFragment){
+                                item.isChecked = true
+                            }*/
+                            h++
+                        }
+                    }
+                })
+        }
+    } catch (e: Exception) {
+        Timber.e(e, "Navigation failed !")
+    }
+}
+
+internal fun matchDestination(
+    destination: NavDestination,
+    @IdRes destId: Int
+): Boolean {
+    var currentDestination: NavDestination? = destination
+    while (currentDestination!!.id != destId && currentDestination.parent != null) {
+        currentDestination = currentDestination.parent
+    }
+    return currentDestination.id == destId
+}
