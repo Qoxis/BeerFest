@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,17 +16,74 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="brewery"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/brewery_header_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/breweryGuideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/brewery_toolbar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/breweryGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/brewery_country_image"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/breweryGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/background_item_brewery" />
+
+    <ImageView
+        android:id="@+id/twitter_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/breweryGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_twitter" />
+
+    <ImageView
+        android:id="@+id/insta_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/breweryGuideline"
+        app:layout_constraintEnd_toStartOf="@+id/twitter_icon"
+        app:srcCompat="@drawable/ic_instagram" />
+
+    <ImageView
+        android:id="@+id/facebook_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/breweryGuideline"
+        app:layout_constraintEnd_toStartOf="@+id/insta_icon"
+        app:srcCompat="@drawable/ic_facebook_color" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_beers"
+        android:layout_width="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_beer"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/breweryGuideline" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

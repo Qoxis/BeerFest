@@ -14,7 +14,7 @@ class BeerFestApp : Application() {
     override fun onCreate() {
         super.onCreate()
         database = Room.databaseBuilder(this, AppDatabase::class.java, "beerfest-db")
-            .createFromAsset("database/sample.db")
+            //.createFromAsset("database/sample.db")
             .build()
 
         startKoin {

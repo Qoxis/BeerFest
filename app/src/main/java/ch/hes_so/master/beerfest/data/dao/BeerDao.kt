@@ -16,6 +16,9 @@ interface BeerDao{
     @Query("SELECT * FROM beer WHERE brewery = :breweryId")
     fun getBeersOfBrewery(breweryId: Int): Flowable<List<Beer>>
 
+    @Query("SELECT * FROM beer WHERE id = :beer_id")
+    fun getBeer(beer_id: Int): Flowable<Beer>
+
     @Insert
     fun insert(beer: Beer)
 

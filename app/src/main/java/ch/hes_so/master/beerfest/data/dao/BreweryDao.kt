@@ -13,8 +13,10 @@ interface BreweryDao{
     @Query("SELECT * FROM brewery")
     fun getAllBrewery(): Flowable<List<Brewery>>
 
+    @Query("SELECT * FROM brewery WHERE id = :breweryId")
+    fun getBrewery(breweryId: String): Flowable<Brewery>
+
     @Insert
     fun insert(brewery: Brewery)
-
 
 }

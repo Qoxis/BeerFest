@@ -22,5 +22,7 @@ interface FlavourDao{
     @Query("SELECT flavourId FROM beer_flavour WHERE beerId = :beerId")
     fun getBeerFlavourId(beerId: Int): Flowable<List<Int>>
 
+    @Query("SELECT * FROM flavours WHERE id IN (SELECT flavourId FROM beer_flavour WHERE beerId = :beerId)")
+    fun getBeerFlavours(beerId: Int): Flowable<List<Flavours>>
 
 }

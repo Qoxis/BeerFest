@@ -18,8 +18,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import ch.hes_so.master.beerfest.R
+import ch.hes_so.master.beerfest.adapter.BreweryAdapter
+import ch.hes_so.master.beerfest.utils.BaseViewModel
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
@@ -48,6 +54,11 @@ class ScanFragment : Fragment() {
     private val displayManager by lazy {
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
     }
+    private var breweryAdapter: BreweryAdapter? = null
+
+    private val onBreweryClick = { id: String ->
+        navigateToBrewery(id)
+    }
 
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
@@ -64,6 +75,16 @@ class ScanFragment : Fragment() {
         } ?: Unit
     }
 
+    fun navigateToBrewery(id: String){
+        //TODO navigate to brewery
+        viewModel?.requestNavigation(id)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        breweryAdapter = BreweryAdapter(onBreweryClick)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -78,20 +99,32 @@ class ScanFragment : Fragment() {
         // Every time the orientation of device changes, update rotation for use cases
         displayManager.registerDisplayListener(displayListener, null)
 
-        preview_view.post {
+        brewery_list.layoutManager = LinearLayoutManager(context)
+        brewery_list.adapter = breweryAdapter
 
+        preview_view.post {
             // Keep track of the display in which this view is attached
             displayId = preview_view.display.displayId
-
             setupCamera()
         }
+
+        viewModel?.brewery?.observe(viewLifecycleOwner, Observer {
+            breweryAdapter?.items = it
+        })
+
+        viewModel?.navigationCommands?.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is BaseViewModel.NavigationCommand.To -> findNavController().navigate(it.directions)
+                is BaseViewModel.NavigationCommand.Back -> findNavController().navigateUp()
+            }
+        })
 
         if (checkPermission()) {
             setupCamera()
         } else {
             requestPermission()
         }
-
+        viewModel?.init()
     }
 
     override fun onDestroyView() {
@@ -153,7 +186,13 @@ class ScanFragment : Fragment() {
                     it.setAnalyzer(cameraExecutor, QrCodeAnalyzer { qrCodes ->
                         Timber.e( "Showing ${qrCodes.size} codes")
                         qrCodes.forEach {
-                            Timber.e( "QRFound - ${it.rawValue}")
+                            if(it.rawValue?.startsWith("brewery") == true) {
+                                it.rawValue?.split("brewery")?.last()?.let { it1 ->
+                                    navigateToBrewery(
+                                        it1
+                                    )
+                                }
+                            }
                         }
                     })
 

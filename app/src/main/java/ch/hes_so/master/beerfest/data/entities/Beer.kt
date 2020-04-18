@@ -1,6 +1,7 @@
 package ch.hes_so.master.beerfest.data.entities
 
 import androidx.room.*
+import java.io.Serializable
 
 @Entity(tableName = "beer")
 data class Beer(
@@ -14,7 +15,7 @@ data class Beer(
     val description: String,
     val color: String,
     val imageUUID: String
-) {
+) : Serializable {
 
     enum class BeerType(val type: String) {
         IPA("IPA"), WHITE("White"), DDH("DDH"), DIPA("DIPA"), DDIPA("DDHIPA"), LAGER("Lager"), ALE("Ale"), PALE_ALE(

@@ -33,6 +33,13 @@
         android:name="ch.hes_so.master.beerfest.ui.blog.ScanFragment"
         android:label="@string/title_scan"
         tools:layout="@layout/fragment_scan" >
+        <action
+            android:id="@+id/action_fragment_scan_to_fragment_brewery"
+            app:destination="@id/fragment_brewery"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
 
     <fragment
@@ -46,6 +53,29 @@
         android:name="ch.hes_so.master.beerfest.ui.brewery.BreweryFragment"
         android:label="@string/title_brewery"
         tools:layout="@layout/fragment_brewery" >
+        <argument
+            android:name="brewery"
+            app:argType="ch.hes_so.master.beerfest.data.entities.Brewery"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_fragment_brewery_to_beerFragment"
+            app:destination="@id/beerFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/beerFragment"
+        android:name="ch.hes_so.master.beerfest.ui.beer.BeerFragment"
+        android:label="fragment_beer"
+        tools:layout="@layout/fragment_beer" >
+        <argument
+            android:name="beer"
+            app:argType="ch.hes_so.master.beerfest.data.entities.Beer"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
 </navigation>

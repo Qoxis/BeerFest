@@ -2,6 +2,7 @@ package ch.hes_so.master.beerfest.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "rating")
 data class Rating(
@@ -12,4 +13,4 @@ data class Rating(
     val rateBitter: Int,
     val rateFruitness: Int,
     val rateLight: Int
-)
+): Serializable
