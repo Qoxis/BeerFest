@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Not far away"
+                android:text="@string/not_far_away"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"

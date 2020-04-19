@@ -45,6 +45,11 @@ class BreweryFragment : Fragment() {
         rv_beers.layoutManager = LinearLayoutManager(context)
         rv_beers.adapter = adapter
 
+        args.brewery?.let {
+            brewery_name.text = it.name
+            Glide.with(this).load(it.thumbnaill).into(brewery_header_image)
+        }
+
         viewModel?.beers?.observe(viewLifecycleOwner, Observer {
             adapter?.items = it
         })
@@ -54,6 +59,6 @@ class BreweryFragment : Fragment() {
                 is BaseViewModel.NavigationCommand.Back -> findNavController().navigateUp()
             }
         })
-        Glide.with(this).load(args.brewery?.thumbnaill).into(brewery_header_image)
+
     }
 }

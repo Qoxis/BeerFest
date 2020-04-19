@@ -36,6 +36,7 @@ class BeerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         args.beer?.let {
+            beer_name.text = it.name
             beer_style.text = it.type
             beer_alcool.text = "${it.acool} %"
             beer_ibu.text = it.IBU.toString()

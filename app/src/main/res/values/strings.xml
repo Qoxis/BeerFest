@@ -5,7 +5,6 @@
     <string name="title_scan">Scan</string>
     <string name="title_brewery">Brasserie</string>
     <string name="title_beer">Bière</string>
-    <string name="caracteristics">Caractéristiques</string>
     <string name="style">Style: </string>
     <string name="couleur">Couleur: </string>
     <string name="alcool">Alcool: </string>
@@ -13,4 +12,6 @@
     <string name="ibu">IBU: </string>
     <string name="type">Type: </string>
     <string name="flavour">Saveurs: </string>
+    <string name="not_far_away">A proximité</string>
+    <string name="next_events">Prochains événements</string>
 </resources>
