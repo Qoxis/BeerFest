@@ -75,7 +75,7 @@ class ScanFragment : Fragment() {
         } ?: Unit
     }
 
-    fun navigateToBrewery(id: String){
+    fun navigateToBrewery(id: String) {
         //TODO navigate to brewery
         viewModel?.requestNavigation(id)
     }
@@ -114,7 +114,10 @@ class ScanFragment : Fragment() {
 
         viewModel?.navigationCommands?.observe(viewLifecycleOwner, Observer {
             when (it) {
-                is BaseViewModel.NavigationCommand.To -> findNavController().navigate(it.directions)
+                is BaseViewModel.NavigationCommand.To -> {
+                    clearCamera()
+                    findNavController().navigate(it.directions)
+                }
                 is BaseViewModel.NavigationCommand.Back -> findNavController().navigateUp()
             }
         })
@@ -135,6 +138,10 @@ class ScanFragment : Fragment() {
 
         // Unregister the broadcast receivers and listeners
         displayManager.unregisterDisplayListener(displayListener)
+    }
+
+    private fun clearCamera() {
+        cameraExecutor.shutdown()
     }
 
     private fun setupCamera() {
@@ -184,13 +191,11 @@ class ScanFragment : Fragment() {
                 // The analyzer can then be assigned to the instance
                 .also {
                     it.setAnalyzer(cameraExecutor, QrCodeAnalyzer { qrCodes ->
-                        Timber.e( "Showing ${qrCodes.size} codes")
-                        qrCodes.forEach {
-                            if(it.rawValue?.startsWith("brewery") == true) {
-                                it.rawValue?.split("brewery")?.last()?.let { it1 ->
-                                    navigateToBrewery(
-                                        it1
-                                    )
+                        Timber.e("Showing ${qrCodes.size} codes")
+                        qrCodes.forEach { code ->
+                            if (code.rawValue?.startsWith("brewery") == true) {
+                                code.rawValue?.split("brewery")?.last()?.let { breweryId ->
+                                    navigateToBrewery(breweryId)
                                 }
                             }
                         }
