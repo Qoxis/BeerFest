@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 
 import ch.hes_so.master.beerfest.R
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_beer.*
 
 class BeerFragment : Fragment() {
@@ -40,6 +41,7 @@ class BeerFragment : Fragment() {
             beer_ibu.text = it.IBU.toString()
             beer_color.text = it.color
             beer_description.text = it.description
+            Glide.with(this).load(it.imageUUID).into(beer_header_image)
         }
 
         viewModel?.flavours?.observe(viewLifecycleOwner, Observer {flavours ->
