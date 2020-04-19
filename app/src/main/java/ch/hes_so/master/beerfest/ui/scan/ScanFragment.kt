@@ -102,12 +102,6 @@ class ScanFragment : Fragment() {
         brewery_list.layoutManager = LinearLayoutManager(context)
         brewery_list.adapter = breweryAdapter
 
-        preview_view.post {
-            // Keep track of the display in which this view is attached
-            displayId = preview_view.display.displayId
-            setupCamera()
-        }
-
         viewModel?.brewery?.observe(viewLifecycleOwner, Observer {
             breweryAdapter?.items = it
         })
@@ -123,7 +117,7 @@ class ScanFragment : Fragment() {
         })
 
         if (checkPermission()) {
-            setupCamera()
+            startCamera()
         } else {
             requestPermission()
         }
@@ -142,6 +136,14 @@ class ScanFragment : Fragment() {
 
     private fun clearCamera() {
         cameraExecutor.shutdown()
+    }
+
+    private fun startCamera() {
+        preview_view.post {
+            // Keep track of the display in which this view is attached
+            displayId = preview_view.display.displayId
+            setupCamera()
+        }
     }
 
     private fun setupCamera() {
@@ -232,12 +234,10 @@ class ScanFragment : Fragment() {
     }
 
     private fun requestPermission() {
-        activity?.let {
-            ActivityCompat.requestPermissions(
-                it, arrayOf(Manifest.permission.CAMERA),
-                PERMISSION_REQUEST_CODE
-            )
-        }
+        requestPermissions(
+            arrayOf(Manifest.permission.CAMERA),
+            PERMISSION_REQUEST_CODE
+        )
     }
 
 
@@ -257,7 +257,7 @@ class ScanFragment : Fragment() {
     ) {
         when (requestCode) {
             PERMISSION_REQUEST_CODE -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                setupCamera()
+                startCamera()
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (context?.let {
