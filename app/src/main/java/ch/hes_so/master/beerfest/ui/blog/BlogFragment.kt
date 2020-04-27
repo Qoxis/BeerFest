@@ -23,9 +23,9 @@ class BlogFragment : Fragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(BlogViewModel::class.java)
         viewModel?.init()
-        /*adapter = EventAdapter {
+        adapter = EventAdapter {
             viewModel?.getEvent(it)
-        }*/
+        }
     }
 
     override fun onCreateView(

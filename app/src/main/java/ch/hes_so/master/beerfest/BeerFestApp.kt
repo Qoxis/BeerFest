@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import ch.hes_so.master.beerfest.data.AppDatabase
 import com.google.firebase.FirebaseApp
+import net.danlew.android.joda.JodaTimeAndroid
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -22,6 +23,7 @@ class BeerFestApp : Application() {
             modules(getModules())
         }
         FirebaseApp.initializeApp(this)
+        JodaTimeAndroid.init(this)
     }
 
     private fun getModules(): Module{

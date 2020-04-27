@@ -13,9 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navController = findNavController(R.id.nav_host_fragment)
-
-        //navView.setupWithNavController(navController)
         nav_view.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.fragment_blog -> nav_host_fragment.findNavController().navigateBottom(
@@ -30,16 +27,6 @@ class MainActivity : AppCompatActivity() {
                     nav_view,
                     it.order
                 )
-                /*R.id.loginFragment -> {
-                    if (userModel.isQonnected) {
-                        navHost.findNavController()
-                            .navigateBottom(R.id.action_bottombar_account, R.id.accountFragment, bottom_bar,  it.order)
-                    } else {
-                        navHost.findNavController()
-                            .navigateBottom(R.id.action_bottombar_login, R.id.loginFragment, bottom_bar,  it.order)
-
-                    }
-                }*/
                 R.id.fragment_account -> nav_host_fragment.findNavController().navigateBottom(
                     R.id.action_bottombar_account,
                     R.id.fragment_account,

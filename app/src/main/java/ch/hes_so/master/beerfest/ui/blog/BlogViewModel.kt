@@ -1,13 +1,13 @@
 package ch.hes_so.master.beerfest.ui.blog
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import ch.hes_so.master.beerfest.data.dao.EventDao
 import ch.hes_so.master.beerfest.data.entities.Event
 import ch.hes_so.master.beerfest.utils.BaseViewModel
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.core.KoinComponent
 import org.koin.core.inject
+import timber.log.Timber
 
 class BlogViewModel : BaseViewModel(), KoinComponent {
 
@@ -15,13 +15,18 @@ class BlogViewModel : BaseViewModel(), KoinComponent {
 
     val events = MutableLiveData<List<Event>>()
 
-    val disposables = CompositeDisposable()
+    private val disposables = CompositeDisposable()
 
     fun init() {
 
-        val disposable = eventDao.getAllEvents().subscribe {
-            events.postValue(it)
-        }
+        val disposable = eventDao.getAllEvents()
+            .onErrorReturn {
+                Timber.e(it)
+                emptyList<Event>()
+            }
+            .subscribe {
+                events.postValue(it)
+            }
         disposables.add(disposable)
     }
 
