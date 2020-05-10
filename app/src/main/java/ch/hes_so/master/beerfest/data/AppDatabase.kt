@@ -7,7 +7,7 @@ import ch.hes_so.master.beerfest.data.converters.Converters
 import ch.hes_so.master.beerfest.data.dao.*
 import ch.hes_so.master.beerfest.data.entities.*
 
-@Database(entities = [Beer::class, Brewery::class, Event::class, Rating::class, Flavours::class, BeerFlavour::class], version = 2, exportSchema = true)
+@Database(entities = [Beer::class, Brewery::class, Event::class, Rating::class, Flavours::class, BeerFlavour::class], version = 3, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun beerDao(): BeerDao

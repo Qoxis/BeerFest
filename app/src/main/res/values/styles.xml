@@ -10,4 +10,22 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="LoveRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/love_rating_bar</item>
+        <item name="colorControlNormal">#BDBDBD</item>
+        <item name="colorControlActivated">#C51111</item>
+    </style>
+
+    <style name="HopsRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/hops_rating_bar</item>
+        <item name="colorControlNormal">#BDBDBD</item>
+        <item name="colorControlActivated">#C51111</item>
+    </style>
+
+    <style name="AlcoholRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/alcohol_rating_bar</item>
+        <item name="colorControlNormal">#BDBDBD</item>
+        <item name="colorControlActivated">#FDA016</item>
+    </style>
+
 </resources>

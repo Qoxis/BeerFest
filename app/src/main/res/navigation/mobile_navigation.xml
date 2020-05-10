@@ -11,7 +11,7 @@
 
     <action
         android:id="@+id/action_bottombar_scan"
-        app:destination="@id/fragment_scan"/>
+        app:destination="@id/fragment_scan" />
 
     <action
         android:id="@+id/action_bottombar_account"
@@ -25,21 +25,20 @@
         android:id="@+id/fragment_account"
         android:name="ch.hes_so.master.beerfest.ui.account.AccountFragment"
         android:label="@string/title_account"
-        tools:layout="@layout/fragment_account" >
-    </fragment>
+        tools:layout="@layout/fragment_account"></fragment>
 
     <fragment
         android:id="@+id/fragment_scan"
         android:name="ch.hes_so.master.beerfest.ui.blog.ScanFragment"
         android:label="@string/title_scan"
-        tools:layout="@layout/fragment_scan" >
+        tools:layout="@layout/fragment_scan">
         <action
             android:id="@+id/action_fragment_scan_to_fragment_brewery"
             app:destination="@id/fragment_brewery"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
 
     <fragment
@@ -52,30 +51,49 @@
         android:id="@+id/fragment_brewery"
         android:name="ch.hes_so.master.beerfest.ui.brewery.BreweryFragment"
         android:label="@string/title_brewery"
-        tools:layout="@layout/fragment_brewery" >
+        tools:layout="@layout/fragment_brewery">
         <argument
             android:name="brewery"
+            android:defaultValue="@null"
             app:argType="ch.hes_so.master.beerfest.data.entities.Brewery"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
         <action
             android:id="@+id/action_fragment_brewery_to_beerFragment"
             app:destination="@id/beerFragment"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/beerFragment"
         android:name="ch.hes_so.master.beerfest.ui.beer.BeerFragment"
         android:label="fragment_beer"
-        tools:layout="@layout/fragment_beer" >
+        tools:layout="@layout/fragment_beer">
         <argument
             android:name="beer"
+            android:defaultValue="@null"
             app:argType="ch.hes_so.master.beerfest.data.entities.Beer"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_beerFragment_to_rateBeerFragment"
+            app:destination="@id/rateBeerFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/rateBeerFragment"
+        android:name="ch.hes_so.master.beerfest.ui.rate_beer.RateBeerFragment"
+        android:label="RateBeerFragment"
+        tools:layout="@layout/fragment_rate_beer">
+        <argument
+            android:name="beer"
+            android:defaultValue="@null"
+            app:argType="ch.hes_so.master.beerfest.data.entities.Beer"
+            app:nullable="true" />
     </fragment>
 
 </navigation>

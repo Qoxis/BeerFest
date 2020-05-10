@@ -1,8 +1,6 @@
 package ch.hes_so.master.beerfest.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import ch.hes_so.master.beerfest.data.entities.*
 import io.reactivex.Flowable
 
@@ -11,9 +9,12 @@ interface RatingDao{
     
     //Rating
     @Query("SELECT * FROM rating WHERE beerId = :beerId")
-    fun getBeerRating(beerId: Int): Flowable<List<Rating>>
+    fun getBeerRating(beerId: Int): Flowable<Rating>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(rating: Rating)
+
+    @Update
+    fun update(rating: Rating)
 
 }

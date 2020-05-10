@@ -42,6 +42,10 @@ class BreweryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(args.brewery == null){
+            findNavController().navigate(R.id.fragment_scan)
+        }
+
         rv_beers.layoutManager = LinearLayoutManager(context)
         rv_beers.adapter = adapter
 

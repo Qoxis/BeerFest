@@ -5,6 +5,7 @@ import ch.hes_so.master.beerfest.data.dao.BeerDao
 import ch.hes_so.master.beerfest.data.dao.FlavourDao
 import ch.hes_so.master.beerfest.data.entities.Beer
 import ch.hes_so.master.beerfest.data.entities.Flavours
+import ch.hes_so.master.beerfest.data.entities.Rating
 import ch.hes_so.master.beerfest.utils.BaseViewModel
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.core.KoinComponent

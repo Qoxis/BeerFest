@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 
 import ch.hes_so.master.beerfest.R
@@ -35,6 +36,10 @@ class BeerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(args.beer == null){
+            findNavController().navigateUp()
+        }
+
         args.beer?.let {
             beer_name.text = it.name
             beer_style.text = it.type
@@ -48,6 +53,11 @@ class BeerFragment : Fragment() {
         viewModel?.flavours?.observe(viewLifecycleOwner, Observer {flavours ->
             beer_flavours.text = flavours.joinToString(", ") { it.name }
         })
+
+        rate_beer.setOnClickListener {
+            val action = BeerFragmentDirections.actionBeerFragmentToRateBeerFragment(args.beer)
+            findNavController().navigate(action)
+        }
 
     }
 

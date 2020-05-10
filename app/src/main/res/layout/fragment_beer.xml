@@ -18,6 +18,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/rate_beer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_rate_button"
+        android:padding="8dp"
+        android:text="Noter"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/beer_header_image"
+        app:layout_constraintRight_toRightOf="parent" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/beerGuideline"
         android:layout_width="wrap_content"

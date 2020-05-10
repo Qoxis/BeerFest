@@ -3,6 +3,7 @@ package ch.hes_so.master.beerfest
 import android.app.Application
 import androidx.room.Room
 import ch.hes_so.master.beerfest.data.AppDatabase
+import ch.hes_so.master.beerfest.data.entities.MIGRATION_2_3
 import com.google.firebase.FirebaseApp
 import net.danlew.android.joda.JodaTimeAndroid
 import org.koin.android.ext.koin.androidContext
@@ -16,6 +17,7 @@ class BeerFestApp : Application() {
         super.onCreate()
         database = Room.databaseBuilder(this, AppDatabase::class.java, "beerfest-db")
             .createFromAsset("database/beerfest-db")
+            .addMigrations(MIGRATION_2_3)
             .build()
 
         startKoin {

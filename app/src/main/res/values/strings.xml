@@ -14,4 +14,10 @@
     <string name="flavour">Saveurs: </string>
     <string name="not_far_away">A proximité</string>
     <string name="next_events">Prochains événements</string>
+    <string name="event_location">Emplacement: %1$s</string>
+    <string name="informations">Informations</string>
+    <string name="appreciation">Appréciation</string>
+    <string name="hoppiness">Hoppiness</string>
+    <string name="alcool_level">Niveau d\'alcool</string>
+    <string name="done">Enregistrer</string>
 </resources>

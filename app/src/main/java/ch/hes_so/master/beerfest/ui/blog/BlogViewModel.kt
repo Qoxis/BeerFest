@@ -36,7 +36,11 @@ class BlogViewModel : BaseViewModel(), KoinComponent {
     }
 
     fun getEvent(eventId: Int) {
-        val disposable = eventDao.getEvent(eventId).subscribe {
+        val disposable = eventDao.getEvent(eventId)
+            .onErrorReturn {
+                Timber.e(it)
+                null
+            }.subscribe {
             //navigate(BlogFragmentDirections.actionactionFragmentBreweryToBeerFragment(it))
         }
         disposables.add(disposable)
