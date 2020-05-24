@@ -7,9 +7,10 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/blogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/informations"
         android:textColor="#000000"
@@ -17,6 +18,19 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/blogTitle"
+        app:layout_constraintBottom_toBottomOf="@id/eventGuideline"
+        android:layout_marginEnd="16dp"
+        android:textSize="16sp"
+        android:text="@string/tu_trouveras_ici_tous_les_v_nements_venir_durant_l_v_nements_ainsi_que_l_heure_de_leur_d_roulement_et_l_emplacement_ou_ils_ont_lieux"
+        />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/eventGuideline"
         android:layout_width="wrap_content"
