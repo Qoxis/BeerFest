@@ -264,12 +264,11 @@ class ScanFragment : Fragment() {
                             ContextCompat.checkSelfPermission(it, Manifest.permission.CAMERA)
                         } != PackageManager.PERMISSION_GRANTED
                     ) {
-                        showMessageOKCancel("You need to allow access permissions",
                             DialogInterface.OnClickListener { _, _ ->
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                     requestPermission()
                                 }
-                            })
+                            }
                     }
                 }
             }

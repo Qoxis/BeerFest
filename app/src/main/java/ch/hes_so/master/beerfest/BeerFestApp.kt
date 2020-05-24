@@ -18,7 +18,6 @@ class BeerFestApp : Application() {
     override fun onCreate() {
         super.onCreate()
         database = Room.databaseBuilder(this, AppDatabase::class.java, "beerfest-db")
-            .createFromAsset("database/beerfest-db")
             .addMigrations(MIGRATION_2_3)
             .build()
 
