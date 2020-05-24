@@ -1,6 +1,11 @@
 package ch.hes_so.master.beerfest
 
+import android.app.Dialog
+import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import androidx.annotation.IdRes
 import androidx.navigation.NavController
@@ -59,6 +64,36 @@ fun NavController.navigateBottom(
     }
 }
 
+inline fun Handler.postIfNotIn(crossinline message: () -> Unit) {
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+        message()
+    } else {
+        post {
+            message()
+        }
+    }
+}
+
+fun DialogInterface?.tryDismiss() {
+    this ?: return
+
+    uiHandler.postIfNotIn {
+        try {
+            if (this is Dialog) {
+                if (isShowing) {
+                    dismiss()
+                }
+            } else {
+                dismiss()
+            }
+        } catch (ex: Exception) {
+            Timber.e(ex)
+        }
+    }
+}
+val uiHandler by lazy { Handler(Looper.getMainLooper()) }
+
+
 internal fun matchDestination(
     destination: NavDestination,
     @IdRes destId: Int
@@ -68,4 +103,11 @@ internal fun matchDestination(
         currentDestination = currentDestination.parent
     }
     return currentDestination.id == destId
+}
+
+inline fun SharedPreferences.editAndApply(crossinline block: SharedPreferences.Editor.() -> Unit) {
+    edit().apply {
+        block()
+        apply()
+    }
 }

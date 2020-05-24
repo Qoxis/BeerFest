@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import ch.hes_so.master.beerfest.data.AppDatabase
 import ch.hes_so.master.beerfest.data.entities.MIGRATION_2_3
+import ch.hes_so.master.beerfest.models.ConfigModel
+import ch.hes_so.master.beerfest.models.LanguageModel
 import com.google.firebase.FirebaseApp
 import net.danlew.android.joda.JodaTimeAndroid
 import org.koin.android.ext.koin.androidContext
@@ -35,6 +37,8 @@ class BeerFestApp : Application() {
             single { database?.eventsDao() }
             single { database?.ratingDao() }
             single { database?.flavourDao() }
+            single { ConfigModel(get()) }
+            single {LanguageModel(get(), get())}
         }
     }
 

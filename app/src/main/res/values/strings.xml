@@ -20,4 +20,7 @@
     <string name="hoppiness">Hoppiness</string>
     <string name="alcool_level">Niveau d\'alcool</string>
     <string name="done">Enregistrer</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="other_langage_app">Quelle langue tu préfères?</string>
 </resources>

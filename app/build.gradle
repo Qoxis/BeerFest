@@ -23,6 +23,7 @@ android {
                 arg("room.schemaLocation", "$projectDir/schemas")
             }
         }
+        resConfigs("fr", "de")
     }
 
     buildTypes {
