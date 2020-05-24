@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragment_account"
-        android:icon="@drawable/ic_account"
-        android:title="@string/title_account" />
-
-    <item
         android:id="@+id/fragment_blog"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_blog" />
@@ -20,5 +15,9 @@
         android:id="@+id/fragment_brewery"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_brewery" />
+    <item
+        android:id="@+id/fragment_params"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/title_params" />
 
 </menu>

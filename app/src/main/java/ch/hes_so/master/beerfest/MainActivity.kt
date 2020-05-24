@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import ch.hes_so.master.beerfest.models.LanguageModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         nav_view.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.fragment_blog -> nav_host_fragment.findNavController().navigateBottom(
@@ -33,9 +31,9 @@ class MainActivity : AppCompatActivity() {
                     nav_view,
                     it.order
                 )
-                R.id.fragment_account -> nav_host_fragment.findNavController().navigateBottom(
-                    R.id.action_bottombar_account,
-                    R.id.fragment_account,
+                R.id.fragment_params -> nav_host_fragment.findNavController().navigateBottom(
+                    R.id.action_bottombar_params,
+                    R.id.fragment_params,
                     nav_view,
                     it.order
                     )
@@ -48,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+        nav_view.menu.findItem(R.id.fragment_scan).isChecked = true
     }
 
     override fun attachBaseContext(newBase: Context) {

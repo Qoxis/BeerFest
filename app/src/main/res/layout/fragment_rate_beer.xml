@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <ImageView
             android:id="@+id/rate_beer_header_image"
             android:layout_width="0dp"
@@ -129,5 +130,16 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ratingAlcohol"
             app:layout_goneMarginTop="6dp" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/rate_beer_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:titleTextColor="@android:color/white"
+            android:background="@color/transparent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

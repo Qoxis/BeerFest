@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/brewery_header_image"
         android:layout_width="0dp"
@@ -93,5 +94,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/brewery_name" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/brewery_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/transparent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

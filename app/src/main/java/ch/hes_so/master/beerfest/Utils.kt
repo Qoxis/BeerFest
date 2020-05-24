@@ -27,7 +27,7 @@ fun NavController.navigateBottom(
             val builder = NavOptions.Builder()
                 .setLaunchSingleTop(true)
             if (order and Menu.CATEGORY_SECONDARY == 0) {
-                builder.setPopUpTo(R.id.fragment_account, false)
+                builder.setPopUpTo(R.id.fragment_params, false)
             }
             navigate(resId, null, builder.build())
 
@@ -51,9 +51,7 @@ fun NavController.navigateBottom(
                             val item = menu.getItem(h)
                             if (matchDestination(destination, item.itemId)) {
                                 item.isChecked = true
-                            } /*else if (item.itemId == R.id.loginFragment && destination.id == R.id.accountFragment){
-                                item.isChecked = true
-                            }*/
+                            }
                             h++
                         }
                     }

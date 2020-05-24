@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/fragment_account">
+    app:startDestination="@+id/fragment_scan">
 
     <action
         android:id="@+id/action_bottombar_blog"
@@ -14,18 +14,18 @@
         app:destination="@id/fragment_scan" />
 
     <action
-        android:id="@+id/action_bottombar_account"
-        app:destination="@id/fragment_account" />
+        android:id="@+id/action_bottombar_params"
+        app:destination="@id/fragment_params" />
 
     <action
         android:id="@+id/action_bottombar_brewery"
         app:destination="@id/fragment_brewery" />
 
     <fragment
-        android:id="@+id/fragment_account"
-        android:name="ch.hes_so.master.beerfest.ui.account.AccountFragment"
-        android:label="@string/title_account"
-        tools:layout="@layout/fragment_account"></fragment>
+        android:id="@+id/fragment_params"
+        android:name="ch.hes_so.master.beerfest.ui.params.ParamsFragment"
+        android:label="@string/title_params"
+        tools:layout="@layout/fragment_params"/>
 
     <fragment
         android:id="@+id/fragment_scan"
@@ -50,7 +50,7 @@
     <fragment
         android:id="@+id/fragment_brewery"
         android:name="ch.hes_so.master.beerfest.ui.brewery.BreweryFragment"
-        android:label="@string/title_brewery"
+        android:label=""
         tools:layout="@layout/fragment_brewery">
         <argument
             android:name="brewery"
@@ -68,7 +68,7 @@
     <fragment
         android:id="@+id/beerFragment"
         android:name="ch.hes_so.master.beerfest.ui.beer.BeerFragment"
-        android:label="fragment_beer"
+        android:label=""
         tools:layout="@layout/fragment_beer">
         <argument
             android:name="beer"
@@ -87,7 +87,7 @@
     <fragment
         android:id="@+id/rateBeerFragment"
         android:name="ch.hes_so.master.beerfest.ui.rate_beer.RateBeerFragment"
-        android:label="RateBeerFragment"
+        android:label=""
         tools:layout="@layout/fragment_rate_beer">
         <argument
             android:name="beer"

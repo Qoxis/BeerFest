@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
 import ch.hes_so.master.beerfest.R
 import ch.hes_so.master.beerfest.data.entities.Rating
 import com.bumptech.glide.Glide
@@ -33,6 +34,8 @@ class RateBeerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        rate_beer_toolbar.setupWithNavController(findNavController())
 
         viewModel?.rating?.observe(viewLifecycleOwner, Observer {
             localRating = it

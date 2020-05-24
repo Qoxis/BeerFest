@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BeerFest</string>
+    <string name="title_params">Einstellungen</string>
+    <string name="title_blog">Blog</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_brewery">Brauerei</string>
+    <string name="title_beer">Bier</string>
+    <string name="style">Stil: </string>
+    <string name="couleur">Farbe: </string>
+    <string name="alcool">Alkohol: </string>
+    <string name="size">Schnitt: </string>
+    <string name="ibu">IBU: </string>
+    <string name="type">Art: </string>
+    <string name="flavour">Aromen: </string>
+    <string name="not_far_away">In der Nähe von</string>
+    <string name="next_events">Kommende Veranstaltungen</string>
+    <string name="event_location">Standort: %1$s</string>
+    <string name="informations">Informations</string>
+    <string name="appreciation">Anerkennung</string>
+    <string name="hoppiness">Hoppiness</string>
+    <string name="alcool_level">Alkoholgehalt</string>
+    <string name="done">Aufzeichnung</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="other_langage_app">Sprache der App</string>
+    <string name="no_brewery">Tu dois d\'abords choisir une brasserie !</string>
+</resources>

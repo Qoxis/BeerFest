@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
 
 import ch.hes_so.master.beerfest.R
 import com.bumptech.glide.Glide
@@ -35,7 +36,7 @@ class BeerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        beer_toolbar.setupWithNavController(findNavController())
         if(args.beer == null){
             findNavController().navigateUp()
         }
