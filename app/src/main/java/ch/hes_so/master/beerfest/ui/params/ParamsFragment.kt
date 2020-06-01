@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ch.hes_so.master.beerfest.R
+import ch.hes_so.master.beerfest.models.ConfigModel
 import ch.hes_so.master.beerfest.models.LanguageModel
 import ch.hes_so.master.beerfest.tryDismiss
 import kotlinx.android.synthetic.main.fragment_params.*
@@ -17,6 +18,8 @@ import org.koin.core.inject
 class ParamsFragment : Fragment(), KoinComponent {
 
     val languageModel by inject<LanguageModel>()
+    private val configModel by inject<ConfigModel>()
+
     private var viewModel: ParamsViewModel? = null
 
 
@@ -33,6 +36,11 @@ class ParamsFragment : Fragment(), KoinComponent {
         other_language_switcher.setOnClickListener {
             handleLanguageSwitcher()
             return@setOnClickListener
+        }
+
+        left_handed.isChecked = configModel.isLeftHanded()
+        left_handed.setOnCheckedChangeListener { _, active ->
+            configModel.setLeftHandMode(active)
         }
     }
 

@@ -6,16 +6,22 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
+import ch.hes_so.master.beerfest.models.ConfigModel
 import ch.hes_so.master.beerfest.models.LanguageModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
+    private val configModel by inject<ConfigModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        configModel.setLastBreweryId(-1)
+
         setContentView(R.layout.activity_main)
         nav_view.setOnNavigationItemSelectedListener {
             when(it.itemId) {

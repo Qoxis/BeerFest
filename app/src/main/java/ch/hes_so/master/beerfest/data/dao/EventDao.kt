@@ -3,6 +3,7 @@ package ch.hes_so.master.beerfest.data.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import ch.hes_so.master.beerfest.data.entities.*
 import io.reactivex.Flowable
 
@@ -18,4 +19,7 @@ interface EventDao{
 
     @Insert
     fun insert(event: Event)
+
+    @Update
+    fun update(event: Event)
 }

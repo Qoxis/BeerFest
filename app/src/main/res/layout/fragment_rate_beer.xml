@@ -43,20 +43,22 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rateBeerGuideline" />
 
-        <RatingBar
+        <com.willy.ratingbar.ScaleRatingBar
             android:id="@+id/ratingLove"
-            style="@style/LoveRatingBar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:isIndicator="false"
-            android:numStars="5"
-            android:progressTint="#C51111"
-            android:rating="0"
-            android:stepSize="1"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginEnd="16dp"
             app:layout_constraintLeft_toLeftOf="@id/rateBeerLove"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rateBeerLove" />
+            app:layout_constraintTop_toBottomOf="@+id/rateBeerLove"
+            app:srb_clickable="true"
+            app:srb_drawableEmpty="@drawable/ic_heart_empty"
+            app:srb_drawableFilled="@drawable/ic_heart_filled"
+            app:srb_isIndicator="false"
+            app:srb_numStars="5"
+            app:srb_rating="0"
+            app:srb_scrollable="true"
+            app:srb_stepSize="1" />
 
         <TextView
             android:id="@+id/rateBeerHops"
@@ -71,19 +73,21 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ratingLove" />
 
-        <RatingBar
+        <com.willy.ratingbar.ScaleRatingBar
             android:id="@+id/ratingHops"
-            style="@style/HopsRatingBar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:isIndicator="false"
-            android:numStars="5"
-            android:rating="0"
-            android:stepSize="1"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@id/rateBeerLove"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rateBeerHops" />
+            app:layout_constraintRight_toRightOf="@id/ratingLove"
+            app:layout_constraintTop_toBottomOf="@+id/rateBeerHops"
+            app:srb_clickable="true"
+            app:srb_drawableEmpty="@drawable/ic_hops_empty"
+            app:srb_drawableFilled="@drawable/ic_hops_filled"
+            app:srb_isIndicator="false"
+            app:srb_numStars="5"
+            app:srb_rating="0"
+            app:srb_scrollable="true"
+            app:srb_stepSize="1" />
 
         <TextView
             android:id="@+id/rateBeerAlcohol"
@@ -99,31 +103,33 @@
             app:layout_constraintTop_toBottomOf="@id/ratingHops" />
 
 
-        <RatingBar
+        <com.willy.ratingbar.ScaleRatingBar
             android:id="@+id/ratingAlcohol"
-            style="@style/AlcoholRatingBar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:isIndicator="false"
-            android:numStars="5"
-            android:rating="0"
-            android:stepSize="1"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@id/rateBeerLove"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rateBeerAlcohol" />
+            app:layout_constraintRight_toRightOf="@id/ratingHops"
+            app:layout_constraintTop_toBottomOf="@+id/rateBeerAlcohol"
+            app:srb_clickable="true"
+            app:srb_drawableEmpty="@drawable/ic_beer_empty"
+            app:srb_drawableFilled="@drawable/ic_beer_filled"
+            app:srb_isIndicator="false"
+            app:srb_numStars="5"
+            app:srb_rating="0"
+            app:srb_scrollable="true"
+            app:srb_stepSize="1"/>
 
         <TextView
             android:id="@+id/saveRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:background="@drawable/background_rate_button"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:text="@string/done"
             android:textAllCaps="true"
             android:textColor="#ffff"
-            android:layout_marginTop="6dp"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -135,11 +141,12 @@
             android:id="@+id/rate_beer_toolbar"
             android:layout_width="0dp"
             android:layout_height="@dimen/toolbar"
+            android:background="@drawable/background_toolbar_transparent_gradient"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:titleTextColor="@android:color/white"
-            android:background="@color/transparent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@android:color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

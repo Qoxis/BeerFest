@@ -23,6 +23,10 @@
     <string name="language_french">Français</string>
     <string name="language_german">Deutsch</string>
     <string name="other_langage_app">Quelle langue tu préfères?</string>
-    <string name="no_brewery">Tu dois d\'abords choisir une brasserie !</string>
-    <string name="tu_trouveras_ici_tous_les_v_nements_venir_durant_l_v_nements_ainsi_que_l_heure_de_leur_d_roulement_et_l_emplacement_ou_ils_ont_lieux">Tu trouveras ici tous les événements à venir durant l\'événements, ainsi que l\'heure de leur déroulement et l\'emplacement ou ils ont lieux.</string>
+    <string name="no_brewery">Tu dois d\'abord choisir une brasserie !</string>
+    <string name="event_infos">Tu trouveras ici tous les événements à venir durant l\'événements, ainsi que l\'heure de leur déroulement et l\'emplacement où ils ont lieu.</string>
+    <string name="rate_saved_successfully">Notes enregistrées !</string>
+    <string name="left_handed">Activer le mode gaucher</string>
+    <string name="rate">Noter</string>
+    <string name="no_beer">Il n\'y a pas de bières référencées sur cette brasserie !</string>
 </resources>

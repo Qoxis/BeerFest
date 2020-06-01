@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="@id/eventGuideline"
         android:layout_marginEnd="16dp"
         android:textSize="16sp"
-        android:text="@string/tu_trouveras_ici_tous_les_v_nements_venir_durant_l_v_nements_ainsi_que_l_heure_de_leur_d_roulement_et_l_emplacement_ou_ils_ont_lieux"
+        android:text="@string/event_infos"
         />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/eventGuideline"

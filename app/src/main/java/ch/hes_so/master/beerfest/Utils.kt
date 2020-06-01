@@ -1,13 +1,17 @@
 package ch.hes_so.master.beerfest
 
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.TypedValue
 import android.view.Menu
 import androidx.annotation.IdRes
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavOptions
@@ -91,6 +95,19 @@ fun DialogInterface?.tryDismiss() {
 }
 val uiHandler by lazy { Handler(Looper.getMainLooper()) }
 
+fun ConstraintLayout.changeConstraints(changes: ConstraintSet.() -> Unit): ConstraintSet {
+    return ConstraintSet().apply {
+        clone(this@changeConstraints)
+        changes(this)
+        applyTo(this@changeConstraints)
+    }
+}
+
+fun Number.fromDpToPx(context: Context): Int {
+    val r = context.resources
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), r.displayMetrics)
+        .toInt()
+}
 
 internal fun matchDestination(
     destination: NavDestination,

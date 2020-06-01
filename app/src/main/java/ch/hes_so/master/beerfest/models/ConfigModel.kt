@@ -1,8 +1,6 @@
 package ch.hes_so.master.beerfest.models
 
 import android.content.Context
-import android.preference.PreferenceManager
-import android.provider.Settings.Global.putString
 import ch.hes_so.master.beerfest.editAndApply
 
 class ConfigModel(context: Context){
@@ -12,7 +10,19 @@ class ConfigModel(context: Context){
             Context.MODE_PRIVATE
         )
     }
-    private val legacyPreferences by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
+
+    fun setLeftHandMode(activated: Boolean){
+        preferences.editAndApply { putBoolean(LEFT_HAND_ACTIVE, activated) }
+    }
+
+    fun isLeftHanded(): Boolean = preferences.getBoolean(LEFT_HAND_ACTIVE, false)
+
+    fun setLastBreweryId(value: Int) {
+        preferences.editAndApply { putInt(LAST_BREWERY, value) }
+    }
+
+    fun getLastBreweryId(): Int =  preferences.getInt(LAST_BREWERY, -1)
+
 
     var preferredLanguage: String?
         get() {
@@ -23,5 +33,7 @@ class ConfigModel(context: Context){
     companion object {
         private const val PREFERENCE_FILE = "beerfest-preferences"
         private const val LANG_KEY = "preferredLanguage"
+        private const val LEFT_HAND_ACTIVE = "leftHandActivated"
+        private const val LAST_BREWERY = "lastbreweryid"
     }
 }

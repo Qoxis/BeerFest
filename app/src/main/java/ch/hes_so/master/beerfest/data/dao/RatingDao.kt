@@ -14,7 +14,7 @@ interface RatingDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(rating: Rating)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(rating: Rating)
 
 }

@@ -8,6 +8,7 @@ import ch.hes_so.master.beerfest.models.ConfigModel
 import ch.hes_so.master.beerfest.models.LanguageModel
 import com.google.firebase.FirebaseApp
 import net.danlew.android.joda.JodaTimeAndroid
+import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -18,6 +19,7 @@ class BeerFestApp : Application() {
     override fun onCreate() {
         super.onCreate()
         database = Room.databaseBuilder(this, AppDatabase::class.java, "beerfest-db")
+            .createFromAsset("database/beerfest-db")
             .addMigrations(MIGRATION_2_3)
             .build()
 

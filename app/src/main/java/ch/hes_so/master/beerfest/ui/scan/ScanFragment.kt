@@ -210,12 +210,12 @@ class ScanFragment : Fragment() {
             try {
                 // A variable number of use-cases can be passed here -
                 // camera provides access to CameraControl & CameraInfo
+
                 camera = cameraProvider.bindToLifecycle(
                     viewLifecycleOwner, cameraSelector, preview, imageCapture, imageAnalyzer
                 )
-
-                // Attach the viewfinder's surface provider to preview use case
                 preview?.setSurfaceProvider(preview_view.createSurfaceProvider(camera?.cameraInfo))
+
             } catch (exc: Exception) {
                 Timber.e("Use case binding failed")
             }
