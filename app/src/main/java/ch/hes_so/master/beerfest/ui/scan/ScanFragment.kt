@@ -214,7 +214,7 @@ class ScanFragment : Fragment() {
                 camera = cameraProvider.bindToLifecycle(
                     viewLifecycleOwner, cameraSelector, preview, imageCapture, imageAnalyzer
                 )
-                preview?.setSurfaceProvider(preview_view.createSurfaceProvider(camera?.cameraInfo))
+                preview?.setSurfaceProvider(preview_view.createSurfaceProvider())
 
             } catch (exc: Exception) {
                 Timber.e("Use case binding failed")
