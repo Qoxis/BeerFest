@@ -1,6 +1,8 @@
 package ch.hes_so.master.beerfest.ui.rate_beer
 
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

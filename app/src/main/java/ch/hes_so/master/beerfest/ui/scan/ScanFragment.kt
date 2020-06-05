@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ch.hes_so.master.beerfest.R
 import ch.hes_so.master.beerfest.adapter.BreweryAdapter
 import ch.hes_so.master.beerfest.utils.BaseViewModel
+import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
@@ -40,7 +41,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 
-class ScanFragment : Fragment() {
+class ScanFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
 
     private var viewModel: ScanViewModel? = null
     private val PERMISSION_REQUEST_CODE = 200
@@ -59,6 +60,7 @@ class ScanFragment : Fragment() {
     private val onBreweryClick = { id: String ->
         navigateToBrewery(id)
     }
+    private var appBarIsExpanded = true
 
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
@@ -90,6 +92,21 @@ class ScanFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_scan, container, false)
+
+    override fun onResume() {
+        super.onResume()
+        headerLayout.addOnOffsetChangedListener(this)
+        headerLayout.setExpanded(appBarIsExpanded)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        headerLayout.removeOnOffsetChangedListener(this)
+    }
+
+    override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
+        appBarIsExpanded = verticalOffset == 0
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -129,6 +146,7 @@ class ScanFragment : Fragment() {
 
         // Shut down our background executor
         cameraExecutor.shutdown()
+        brewery_list.adapter = null
 
         // Unregister the broadcast receivers and listeners
         displayManager.unregisterDisplayListener(displayListener)
