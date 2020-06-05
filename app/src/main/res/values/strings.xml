@@ -12,7 +12,7 @@
     <string name="ibu">IBU: </string>
     <string name="type">Type: </string>
     <string name="flavour">Saveurs: </string>
-    <string name="not_far_away">A proximité</string>
+    <string name="not_far_away">Brasseries</string>
     <string name="next_events">Prochains événements</string>
     <string name="event_location">Emplacement: %1$s</string>
     <string name="informations">Informations</string>
@@ -23,7 +23,7 @@
     <string name="language_french">Français</string>
     <string name="language_german">Deutsch</string>
     <string name="other_langage_app">Quelle langue tu préfères?</string>
-    <string name="no_brewery">Tu dois d\'abord choisir une brasserie !</string>
+    <string name="no_brewery">Choisis une brasserie en scannant le QR code ou en la sélectionnant dans la liste</string>
     <string name="event_infos">Tu trouveras ici tous les événements à venir durant l\'événements, ainsi que l\'heure de leur déroulement et l\'emplacement où ils ont lieu.</string>
     <string name="rate_saved_successfully">Notes enregistrées !</string>
     <string name="left_handed">Activer le mode gaucher</string>
